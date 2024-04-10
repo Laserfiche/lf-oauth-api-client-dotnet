@@ -29,5 +29,18 @@ namespace Laserfiche.Api.Client.Utils
                 throw new ArgumentNullException(nameof(domain));
             return $"https://api.{domain}/repository/";
         }
+
+
+        /// <summary>
+        /// Returns the Laserfiche Cloud OData Api base uri using the given domain.
+        /// </summary>
+        /// <param name="domain">The Laserfiche domain.</param>
+        /// <returns>The Laserfiche Cloud OData Api base uri.</returns>
+        public static string GetODataApiBaseUri(string domain)
+        {
+            if (string.IsNullOrWhiteSpace(domain))
+                throw new ArgumentNullException(nameof(domain));
+            return $"https://api.{domain}/odata4/";
+        }
     }
 }
