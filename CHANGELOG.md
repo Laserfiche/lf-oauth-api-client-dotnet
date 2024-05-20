@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.6
+
+### Features
+
+- Added `ApiHttpMessageHandler` HTTP DelegatingHandler class to add seamless API authentication and retries to an HttpClient.
+
+### Chore & Maintenance
+
+- Update `Microsoft.IdentityModel.JsonWebTokens` to `7.5.2`
+- Update `Newtonsoft.Json" Version` from `12.0.3` to `13.0.3`
+
 ## 1.3.5
 
 ### Chore & Maintenance

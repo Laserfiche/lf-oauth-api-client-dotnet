@@ -44,5 +44,24 @@ namespace Laserfiche.Api.Client.UnitTest
         {
             DomainUtils.GetRepositoryApiBaseUri(domain);
         }
+
+        [TestMethod]
+        public void GetODataApiBaseUri_Success()
+        {
+            string domain = "laserfiche.ca";
+            string baseUri = DomainUtils.GetODataApiBaseUri(domain);
+            Assert.AreEqual($"https://api.{domain}/odata4/", baseUri);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [DataTestMethod]
+        [DataRow(null)]
+        [DataRow("")]
+        [DataRow("   ")]
+        public void GetODataApiBaseUri_NullEmptyDomain(string domain)
+        {
+            DomainUtils.GetODataApiBaseUri(domain);
+        }
+
     }
 }
