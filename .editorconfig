@@ -1,7 +1,7 @@
 [*.{cs,vb}]
 dotnet_diagnostic.CA2007.severity = error
 dotnet_code_quality.CA2007.exclude_async_void_methods = true
-file_header_template = Copyright (c) Laserfiche.\nLicensed under the MIT License. See LICENSE in the project root for license information.
+file_header_template = Copyright Laserfiche.\nLicensed under the MIT License. See LICENSE in the project root for license information.
 
 [*.{cs,vb}]
 #### Naming styles ####
@@ -123,3 +123,4 @@ csharp_style_prefer_pattern_matching = true:silent
 csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
 csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
 csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_prefer_primary_constructors = true:suggestion

@@ -1,11 +1,11 @@
-// Copyright (c) Laserfiche.
+// Copyright Laserfiche.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
+using Laserfiche.Api.Client.Utils;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Laserfiche.Api.Client.Utils;
 
 namespace Laserfiche.Api.Client.HttpHandlers
 {
@@ -46,8 +46,11 @@ namespace Laserfiche.Api.Client.HttpHandlers
 
             // Sets the authorization header
             var beforeSendResult = await _httpRequestHandler.BeforeSendAsync(request, cancellationToken).ConfigureAwait(false);
-            Uri apiBaseUri = new Uri(_getApiBaseUri(beforeSendResult.RegionalDomain));
-            request.RequestUri = new Uri(apiBaseUri, request.RequestUri.PathAndQuery);
+            string apiBaseUri = _getApiBaseUri(beforeSendResult.RegionalDomain);
+            if (!request.RequestUri.AbsoluteUri.StartsWith(apiBaseUri, StringComparison.OrdinalIgnoreCase))
+            {
+                request.RequestUri = new Uri(string.Concat(apiBaseUri, request.RequestUri.PathAndQuery.Substring(1)));
+            }
 
             try
             {
